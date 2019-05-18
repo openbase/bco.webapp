@@ -1,41 +1,8 @@
-Vue.component('device-menu',{
+<template>
+    <div>Test123</div>
+</template>
 
-components: {
-    ProductComponent, ReviewComponent
-},
+<script>
 
-props: {
-    message: String,
-    product: Object,
-    email: {
-        type: String,
-        required: true,
-        default: "none"
-        validator: function (value) {
-        }
-    }
-},
-
-data: function() {
-    return {
-        firstName: 'Vue',
-        lastName: 'Mastery'
-    }
-},
-
-computed: {
-    fullName: function () {
-        return this.firstName + ' ' + this.lastName
-    }
-},
-
-watch: {
-    firstName: function (value, oldValue) { ... }
-},
-
-methods: { ... },
-
-
-template: 'Test2'
-
-})
+    export default {}
+</script>
