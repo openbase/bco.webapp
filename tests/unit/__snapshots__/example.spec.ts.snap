@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelloWorld.vue renders props.msg when passed 1`] = `
+"Welcome to Vuetify
+       
+        For help and collaboration with other Vuetify developers,
+        please join our online
+        Discord Community What's next? 
+          Explore components
+        
+          Select a layout
+        
+          Frequently Asked Questions
+         Important Links 
+          Documentation
+        
+          Chat
+        
+          Made with Vuetify
+        
+          Twitter
+        
+          Articles
+         Ecosystem 
+          vuetify-loader
+        
+          github
+        
+          awesome-vuetify"
+`;
