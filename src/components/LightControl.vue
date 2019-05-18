@@ -30,9 +30,9 @@
     </v-layout>
   </v-container>
 </template>
-
 <script>
 import axios from "axios";
+
 export default {
   data: function() {
     return {
@@ -41,31 +41,27 @@ export default {
   },
   created() {
     axios
-      .get(`spoon:8000/light`)
+      .get(`http://localhost:8080/light`)
       .then(response => {
-        // JSON responses are automatically parsed.
-        this.switch1 = response.data;
+        this.switch1 = response.data.power_state.value === "ON";
       })
       .catch(e => {
-        this.errors.push(e);
+        console.error(JSON.stringify(e, null, 2));
       });
   },
   methods: {
-    // Fetches posts when the component is created.
-
     postLightSwitch() {
+      const value = this.switch1 ? "ON" : "OFF";
+
       axios
-        .post(`spoon:8000/light`, {
-          body: {
-            id: "53b59c91-dd89-4a24-95ae-0ba841634039",
-            power_state: {
-              value: "OFF"
-            }
+        .post(`http://localhost:8080/light`, {
+          id: "53b59c91-dd89-4a24-95ae-0ba841634039",
+          power_state: {
+            value
           }
         })
-        .then(response => {})
         .catch(e => {
-          this.errors.push(e);
+          console.error(JSON.stringify(e, null, 2));
         });
     }
   }
