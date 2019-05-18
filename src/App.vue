@@ -2,32 +2,27 @@
   <v-app>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
+        <span>BCO - </span>
+        <span class="font-weight-light">USER INTERFACE</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
+
+      <v-icon>mdi-anchor</v-icon>
     </v-toolbar>
 
     <v-content>
-      <HelloWorld />
+      <LightControl />
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+import LightControl from "./components/LightControl";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    LightControl
   },
   data() {
     return {
