@@ -1,4 +1,4 @@
-# bco.webapp [![Build Status](https://travis-ci.org/openbase/bco.webapp.svg?branch=master)](https://travis-ci.org/openbase/bco.webapp)
+# bco.webapp [![Build Status](https://travis-ci.org/openbase/bco.webapp.svg?branch=master)](https://travis-ci.org/openbase/bco.webapp) [![Coverage Status](https://coveralls.io/repos/github/openbase/bco.webapp/badge.svg)](https://coveralls.io/github/openbase/bco.webapp)
 
 ## Project setup
 ```
