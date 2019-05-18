@@ -1,4 +1,4 @@
-# bco.webapp
+# bco.webapp [![Build Status](https://travis-ci.org/openbase/bco.webapp.svg?branch=master)](https://travis-ci.org/openbase/bco.webapp)
 
 ## Project setup
 ```
