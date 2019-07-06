@@ -41,7 +41,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://localhost:8080/light`)
+      .get(`http://192.168.80.62:8000/light`)
       .then(response => {
         this.switch1 = response.data.power_state.value === "ON";
       })
@@ -54,7 +54,7 @@ export default {
       const value = this.switch1 ? "ON" : "OFF";
 
       axios
-        .post(`http://localhost:8080/light`, {
+        .post(`http://192.168.80.62:8000/light`, {
           id: "53b59c91-dd89-4a24-95ae-0ba841634039",
           power_state: {
             value
