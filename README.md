@@ -4,7 +4,7 @@ The official bco webapp used to control the environment via a web browser and mo
 [![Build Status](https://travis-ci.org/openbase/bco.webapp.svg?branch=master)](https://travis-ci.org/openbase/bco.webapp) [![Coverage Status](https://coveralls.io/repos/github/openbase/bco.webapp/badge.svg)](https://coveralls.io/github/openbase/bco.webapp)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/9617f59d-69b1-4a34-a1dd-95eb03c7c6b9/deploy-status)](https://app.netlify.com/sites/bco-webapp/deploys)
 
-Served via: https://[basecubeone.org](http://webapp.basecubeone.org/)
+Served via: https://[webapp.basecubeone.org](https://webapp.basecubeone.org/)
 
 ## Project setup
 ```
