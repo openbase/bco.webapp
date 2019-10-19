@@ -1,22 +1,27 @@
-import Vue from "vue";
-import "./plugins/vuetify";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import "./registerServiceWorker";
-import vuetify from './plugins/vuetify'
+// Polyfills
+import '@babel/polyfill'
 
-Vue.config.productionTip = false;
+// Libs
+import Vue from 'vue'
+
+// Plugins
+import '@/plugins/bootstrap'
+import '@/plugins/vuetify'
+import '@/components'
+
+// Application
+import App from './App.vue'
+import router from '@/router'
+import store from '@/store'
+
+import { sync } from 'vuex-router-sync'
+
+sync(store, router)
+
+Vue.config.productionTip = false
 
 new Vue({
-  vuetify,
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
-
-// new Vue({
-//   router,
-//   store,
-//   render: h => h(App)
-// }).$mount("#app");
