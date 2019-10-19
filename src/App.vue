@@ -44,7 +44,7 @@
 <script>
 import LightControl from "./components/LightControl";
 
-let moment = require('moment');
+let moment = require("moment");
 
 export default {
   name: "App",
