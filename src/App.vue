@@ -22,7 +22,7 @@
       <LightControl />
     </v-content>
 
-    <v-bottom-navigation v-model="bottomNav" grow>
+    <v-bottom-navigation grow>
       <v-btn value="recent">
         <span>Dashboard</span>
         <v-icon>dashboard</v-icon>

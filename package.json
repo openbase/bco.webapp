@@ -10,6 +10,7 @@
     "testAndBuild": "vue-cli-service test:unit && vue-cli-service build"
   },
   "dependencies": {
+    "@openbase/bco-openapi": "^2.0.0-SNAPSHOT.201910191500",
     "axios": "^0.19.0",
     "core-js": "^3.3.2",
     "coveralls": "^3.0.7",
