@@ -32,10 +32,11 @@
 </template>
 
 <script lang="ts">
+import { bco } from "@/api";
 import {
-  DefaultApi,
   OpenbaseActionInitiatorInitiatorType,
   OpenbaseActionParameter,
+  OpenbaseLabel,
   OpenbasePowerState,
   OpenbasePowerStateState,
   OpenbaseServiceTemplateServiceType
@@ -47,12 +48,28 @@ import Vue from "vue";
 export default class LightControl extends Vue {
   switch1 = true;
 
+  mounted() {
+    bco
+      .registryUnitGetUnitConfigsGet()
+      .then(value => {
+        value.body.forEach(unitConfig => {
+          try {
+            console.log(
+              (unitConfig.label as OpenbaseLabel).entry.pop().value.pop()
+            );
+          } catch (e) {
+            console.warn("unable to print unit label", e);
+          }
+        });
+      })
+      .catch(reason => console.error(reason));
+  }
+
   postLightSwitch() {
     const value = this.switch1
       ? OpenbasePowerStateState.ON
       : OpenbasePowerStateState.OFF;
 
-    const api = new DefaultApi("http://ewa:8484/");
     const powerState: OpenbasePowerState = {
       value: value
     };
@@ -66,7 +83,7 @@ export default class LightControl extends Vue {
         initiatorType: OpenbaseActionInitiatorInitiatorType.HUMAN
       }
     };
-    api.unitApplyActionPost(parameter).catch(reason => console.error(reason));
+    bco.unitApplyActionPost(parameter).catch(reason => console.error(reason));
   }
 }
 </script>
