@@ -1,27 +1,12 @@
-// Polyfills
-import '@babel/polyfill'
-
-// Libs
-import Vue from 'vue'
-
-// Plugins
-import '@/plugins/bootstrap'
-import '@/plugins/vuetify'
-import '@/components'
-
-// Application
-import App from './App.vue'
-import router from '@/router'
-import store from '@/store'
-
-import { sync } from 'vuex-router-sync'
-
-sync(store, router)
-
-Vue.config.productionTip = false
+import Vue from "vue";
+import router from "./router";
+import store from "./store";
+import App from "./App.vue";
+import vuetify from "@/plugins/vuetify"; // path to vuetify export
 
 new Vue({
+  vuetify,
   router,
   store,
   render: h => h(App)
-}).$mount('#app')
+}).$mount("#app");
