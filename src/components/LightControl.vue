@@ -3,11 +3,11 @@
     <v-list-item>
       <v-list-item-content>
         <v-list-item-title class="headline"
-          >Light Control Component</v-list-item-title
-        >
+          >Light Control Component
+        </v-list-item-title>
         <v-list-item-subtitle
-          >Write something that makes sense here.</v-list-item-subtitle
-        >
+          >Write something that makes sense here.
+        </v-list-item-subtitle>
       </v-list-item-content>
       <p v-if="switch1">
         <v-icon x-large color="green darken-2">mdi-lightbulb</v-icon>
@@ -30,42 +30,45 @@
     </v-card-actions>
   </v-card>
 </template>
-<script>
-import axios from "axios";
 
-export default {
-  data: function() {
-    return {
-      switch1: true
+<script lang="ts">
+import {
+  DefaultApi,
+  OpenbaseActionInitiatorInitiatorType,
+  OpenbaseActionParameter,
+  OpenbasePowerState,
+  OpenbasePowerStateState,
+  OpenbaseServiceTemplateServiceType
+} from "@openbase/bco-openapi";
+import Component from "vue-class-component";
+import Vue from "vue";
+
+@Component
+export default class LightControl extends Vue {
+  switch1 = true;
+
+  postLightSwitch() {
+    const value = this.switch1
+      ? OpenbasePowerStateState.ON
+      : OpenbasePowerStateState.OFF;
+
+    const api = new DefaultApi("http://ewa:8484/");
+    const powerState: OpenbasePowerState = {
+      value: value
     };
-  },
-  created() {
-    axios
-      .get(`https://scummbar:8484/light`)
-      .then(response => {
-        this.switch1 = response.data.power_state.value === "ON";
-      })
-      .catch(e => {
-        console.error(JSON.stringify(e, null, 2));
-      });
-  },
-  methods: {
-    postLightSwitch() {
-      const value = this.switch1 ? "ON" : "OFF";
-
-      axios
-        .post(`https://scummbar:8484/unit/applyAction`, {
-          id: "53b59c91-dd89-4a24-95ae-0ba841634039",
-          power_state: {
-            value
-          }
-        })
-        .catch(e => {
-          console.error(JSON.stringify(e, null, 2));
-        });
-    }
+    const parameter: OpenbaseActionParameter = {
+      serviceStateDescription: {
+        unitId: "53b59c91-dd89-4a24-95ae-0ba841634039",
+        serviceType: OpenbaseServiceTemplateServiceType.POWERSTATESERVICE,
+        serviceState: JSON.stringify(powerState)
+      },
+      actionInitiator: {
+        initiatorType: OpenbaseActionInitiatorInitiatorType.HUMAN
+      }
+    };
+    api.unitApplyActionPost(parameter).catch(reason => console.error(reason));
   }
-};
+}
 </script>
 
 <style></style>
